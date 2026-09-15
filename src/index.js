@@ -8,11 +8,10 @@ import path from 'path';
 
 //rotas
 // import authRoutes from './routes/authRoutes.js';
-// import clienteRoutes from './routes/clienteRoutes.js';
+import clienteRoutes from './routes/clienteRoutes.js';
 // import produtoRoutes from './routes/produtoRoutes.js';
 import { fileURLToPath } from 'url';
-// import pedidoRoutes from './routes/pedidoRoutes.js';
-// import { error } from 'console';
+
 const app = express()
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -46,7 +45,7 @@ app.get('/', (req, res) => {
 
 const apiPrefix = '/api';
 
-// app.use(`${apiPrefix}/clientes`, clienteRoutes)
+app.use(`${apiPrefix}/clientes`, clienteRoutes)
 // app.use(`${apiPrefix}/login`, authRoutes)
 // app.use(`${apiPrefix}/produtos`, produtoRoutes)
 // app.use(`${apiPrefix}/pedidos`, pedidoRoutes)
