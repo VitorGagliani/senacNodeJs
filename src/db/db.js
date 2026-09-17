@@ -8,6 +8,21 @@ const db = mysql.createPool({
     database: process.env.DB_NAME
 });
 
+const originalQuery = db.query.bind(db);
+
+db.query = async (sql, values) => {
+
+    const queryLog = mysql.format(sql, values);
+
+    console.log(`
+        --------------------------
+        Query:
+        ${queryLog}
+        --------------------------
+        `);
+
+    return originalQuery(sql, values);
+};
 (async () =>{
     try{
         const connection = await db.getConnection();
