@@ -9,7 +9,8 @@ import path from 'path';
 //rotas
 // import authRoutes from './routes/authRoutes.js';
 import clienteRoutes from './routes/clienteRoutes.js';
-// import produtoRoutes from './routes/produtoRoutes.js';
+import produtoRoutes from './routes/produtoRoutes.js';
+import pedidoRoutes from './routes/pedidoRoutes.js';
 import { fileURLToPath } from 'url';
 
 const app = express()
@@ -47,8 +48,8 @@ const apiPrefix = '/api';
 
 app.use(`${apiPrefix}/clientes`, clienteRoutes)
 // app.use(`${apiPrefix}/login`, authRoutes)
-// app.use(`${apiPrefix}/produtos`, produtoRoutes)
-// app.use(`${apiPrefix}/pedidos`, pedidoRoutes)
+app.use(`${apiPrefix}/produtos`, produtoRoutes)
+app.use(`${apiPrefix}/pedidos`, pedidoRoutes)
 
 app.use((err, req, res, next) =>{
   console.error(err.stack);
